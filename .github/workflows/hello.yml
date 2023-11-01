@@ -1,0 +1,48 @@
+name: Hello World!
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI or API.
+on:
+  workflow_dispatch:
+    inputs:
+      work-dir:
+        description: 'The full absolute path of UFT tests folder'
+        #default: "D:\\Work\\Temp\\UFT"
+        default: ..\
+        type: string
+        required: true
+      test:
+        description: "The list of paths with test locations"
+        #default: "D:\\Work\\UFTTests\\uft-one-tests"
+        default: .\uft-one-tests
+        type: string
+        required: true
+      isDemo:
+        description: "This is a flag"
+        default: true
+        type: boolean
+        required: false
+jobs:
+  getUftTests:
+    runs-on: self-hosted
+    steps:
+    - name: Display the working directory
+      run: echo "$pwd"
+    - name: Checkout current repo
+      uses: actions/checkout@v3
+      with:
+        ref: ${{github.ref_name}}
+        clean: false
+  runUftTests:
+    runs-on: self-hosted
+    needs: getUftTests
+    name: A job to say hello
+    steps:
+      - name: Hello world action step
+        id: hello
+        uses: dorin7bogdan/hello-js-action@main
+        with:
+          work-dir: ${{inputs.work-dir}}
+          tests: ${{inputs.test}}
+      # Use the output from the `hello` step
+      - name: Get the output exit-code
+        run: echo "The time was ${{ steps.hello.outputs.exit-code }}"

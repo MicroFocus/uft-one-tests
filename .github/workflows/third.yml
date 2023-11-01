@@ -1,0 +1,24 @@
+name: Manual workflow 3
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI or API.
+on:
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: pwsh
+    working-directory: ..\
+
+jobs:
+  checkFTToolsLauncher:
+    runs-on: self-hosted
+    steps:
+    - id: step1
+      run: |
+        $q = -2
+        "X=$q" >> $env:GITHUB_OUTPUT
+    - if: ${{steps.step1.outputs.X}} != 0
+      uses: actions/github-script@v6
+      with:
+        script: |
+          core.setFailed('The job failed with status ${{steps.step1.outputs.X}} !')    
