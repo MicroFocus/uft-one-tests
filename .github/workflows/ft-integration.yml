@@ -1,0 +1,21 @@
+name: FT-integration
+on:
+  workflow_dispatch:
+    inputs:
+      testPaths:
+        description: 'Test path(s)' # "path\to\folder" or "path\to\GUITest1" or array of paths: ["path\\to\\GUITest1", "path\\to\\GUITest2", ...]. Absolute paths are not allowed. The paths will be validated against the repository root.
+        required: true
+        default: ""
+permissions:
+  contents: read  # Retain read access to contents if needed
+jobs:
+  ft_integration_job:
+    runs-on: [self-hosted]
+    name: FT-Integration-filesystem
+    steps:
+      - name: FT Integration
+        uses: opentext/functional-testing@26.3.0
+        id: ft-integration
+        with:
+          testPaths: ${{inputs.testPaths}}
+          githubToken: ${{secrets.GITHUB_TOKEN}}
