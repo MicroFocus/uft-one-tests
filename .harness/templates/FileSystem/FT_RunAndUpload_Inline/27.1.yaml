@@ -7,6 +7,7 @@ template:
   projectIdentifier: UFT
   orgIdentifier: opentext
   tags:
+    functional_testing: ""
   spec:
     stageType: CD
     steps:
