@@ -1,7 +1,7 @@
 template:
   name: FT_RunAndUpload_Inline
   identifier: FT_RunAndUpload_Inline
-  versionLabel: 27.1
+  versionLabel: "27.1"
   type: StepGroup
   description: Step group with both steps defined inline. Runs FTToolsLauncher with runType=FileSystem, fsZipTestReports=true, fsDeletePreviousTestReports (yes/no from input) and generateJUnitReport (yes/no from input) in FT_TOOLS_LAUNCHER\<pipeline identifier>\<sequenceId> (printing the launcher command first, integer timeout in props), fails the step on a non-zero exit code when failIfNotPassed is yes, then uploads all files from that run folder (props, results, reports) to an Artifact Registry under a per-pipeline package, even if the run fails. The upload step deletes the run folder when cleanupTestRunFiles is yes and all uploads succeed.
   projectIdentifier: UFT
