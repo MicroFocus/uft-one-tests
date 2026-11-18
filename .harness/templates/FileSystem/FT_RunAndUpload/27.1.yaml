@@ -1,13 +1,12 @@
 template:
   name: FT_RunAndUpload
   identifier: FT_RunAndUpload
-  versionLabel: v1
+  versionLabel: "27.1"
   type: StepGroup
   description: Runs FTToolsLauncher with FT_Run, then uploads all files from the run folder with FT_Upload, even if the run fails. FT_Upload deletes the run folder when cleanupTestRunFiles is yes and all uploads succeed.
   projectIdentifier: UFT
-  orgIdentifier: default
+  orgIdentifier: opentext
   tags:
-    ai_generated: ""
   spec:
     stageType: CD
     steps:

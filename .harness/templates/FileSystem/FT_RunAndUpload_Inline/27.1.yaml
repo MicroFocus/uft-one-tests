@@ -7,7 +7,6 @@ template:
   projectIdentifier: UFT
   orgIdentifier: opentext
   tags:
-    ai_generated: ""
   spec:
     stageType: CD
     steps:
