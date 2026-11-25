@@ -16,11 +16,13 @@ template:
           identifier: Run_FTToolsLauncher
           template:
             templateRef: FT_Run
-            versionLabel: v1
+            versionLabel: "27.1"
             templateInputs:
               identifier: Run_FTToolsLauncher
-              type: Command
+              type: ShellScript
               spec:
+                executionTarget:
+                  connectorRef: <+input>
                 environmentVariables:
                   - name: testPath
                     type: String
@@ -53,17 +55,19 @@ template:
             stageStatus: All
           template:
             templateRef: FT_Upload
-            versionLabel: v1
+            versionLabel: "27.1"
             templateInputs:
               identifier: Upload_Files
-              type: Command
+              type: ShellScript
               spec:
+                executionTarget:
+                  connectorRef: <+input>
                 environmentVariables:
                   - name: RegistryName
                     type: String
                     value: <+input>
                   - name: ApiKey
-                    type: String
+                    type: Secret
                     value: <+input>
                   - name: cleanupTestRunFiles
                     type: String
