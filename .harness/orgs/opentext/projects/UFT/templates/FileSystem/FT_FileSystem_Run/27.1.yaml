@@ -1,6 +1,6 @@
 template:
-  name: FT_Run
-  identifier: FT_Run
+  name: FT_FileSystem_Run
+  identifier: FT_FileSystem_Run
   versionLabel: "27.1"
   type: Step
   description: WinRM ShellScript step that writes props.txt (runType=FileSystem, resultsFilename=results.xml, integer timeout, fsZipTestReports=true, fsDeletePreviousTestReports from input, generateJUnitReport yes/no from input) in FT_TOOLS_LAUNCHER\<pipeline identifier>\<sequenceId> on the VM, prints the launcher command, and runs FTToolsLauncher, waiting for the process to complete. Fails the step on a non-zero exit code when failIfNotPassed is yes.
